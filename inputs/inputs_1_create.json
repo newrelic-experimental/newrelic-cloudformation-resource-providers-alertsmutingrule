@@ -1,0 +1,3 @@
+{
+  "Rule": "rule: {        name: \"CloudFormation muting rule- create\",        description: \"Mute host-1 violations\",        enabled: true,        condition: {          operator: AND,          conditions: [{            attribute: \"tags.host\",            operator: EQUALS,            values: [\"host-1\"]          }]        }      }"
+}

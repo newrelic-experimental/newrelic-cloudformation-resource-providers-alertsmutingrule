@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Sample New Relic Alerts NRQL Condition Template
+Resources:
+  MutingRuleResource:
+    Type: 'NewRelic::Observability::AlertsMutingRule'
+    Properties:
+      Rule: >-
+        rule: {
+          name: "Test stack muting rule",
+          description: "Mute host-1 violations",
+          enabled: true,
+          condition: {
+            operator: AND,
+            conditions: [{
+              attribute: "tags.host",
+              operator: EQUALS,
+              values: ["host-1"]
+            }]
+          }
+        }
+Outputs:
+  MutingRuleId:
+    Value: !GetAtt MutingRuleResource.Id
